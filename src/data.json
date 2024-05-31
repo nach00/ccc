@@ -1,0 +1,72 @@
+[
+  {
+    "id": "greeting",
+    "type": "message",
+    "nodeType": "input",
+    "message": "Hello! Would you like to order a pizza?",
+    "nextStepID": ["order_pizza", "no_order_pizza"]
+  },
+  {
+    "id": "order_pizza",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Affirmative: the customer would like to order a pizza",
+    "nextStepID": "choose_toppings"
+  },
+  {
+    "id": "no_order_pizza",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Negative: the customer would not like to order a pizza",
+    "nextStepID": "done"
+  },
+  {
+    "id": "choose_toppings",
+    "type": "message",
+    "nodeType": "default",
+    "message": "Let me know the toppings you would like",
+    "nextStepID": ["toppings", "unclear_choice"]
+  },
+  {
+    "id": "toppings",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Toppings: the customer has chosen the toppings",
+    "nextStepID": "done"
+  },
+  {
+    "id": "unclear_choice",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Unclear: the customer was unclear about their choice",
+    "nextStepID": "assume_cheese"
+  },
+  {
+    "id": "assume_cheese",
+    "type": "message",
+    "nodeType": "default",
+    "message": "Would a cheese pizza be ok?",
+    "nextStepID": ["yes_cheese", "no_cheese"]
+  },
+  {
+    "id": "yes_cheese",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Affirmative: the customer would like a plain cheese pizza",
+    "nextStepID": "done"
+  },
+  {
+    "id": "no_cheese",
+    "type": "reply",
+    "nodeType": "default",
+    "intent": "Negative: the customer would like their pizza extra-cheeseless",
+    "nextStepID": "done"
+  },
+  {
+    "id": "done",
+    "type": "message",
+    "nodeType": "output",
+    "message": "Pizza is on the way!",
+    "nextStepID": null
+  }
+]
