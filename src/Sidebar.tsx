@@ -21,7 +21,6 @@ const Sidebar = ({ suggestedNodes }: { suggestedNodes: string[] }) => {
         // Perform any parsing or processing needed for each entry here
         const { nextStepID, ...rest } = entry; // Destructure nextStepID
 
-        // Type guard to ensure nextStepID is either a string or an array of strings
         const validNextStepID =
           typeof nextStepID === "string"
             ? nextStepID
