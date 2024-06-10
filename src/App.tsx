@@ -13,6 +13,7 @@ import ReactFlow, {
   ReactFlowProvider,
   useEdgesState,
   useNodesState,
+  Node as ReactFlowNode,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { toast, ToastContainer } from "react-toastify";
@@ -22,7 +23,7 @@ import Sidebar from "./components/Sidebar/Sidebar.tsx";
 import { Export } from "./assets/Icons.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import { initialNodes, initialEdges } from "./initialElements";
-import Node from "./components/Node/Node.tsx";
+import CustomNode from "./components/CustomNode/CustomNode.tsx";
 
 interface NodeData {
   id: string;
@@ -33,7 +34,10 @@ interface NodeData {
   intent: string | undefined;
   nextStepID: string | string[] | null;
   className: string | undefined;
+  data?: never;
 }
+
+type CustomNodeType = ReactFlowNode<NodeData>;
 
 const DnDFlow = () => {
   const reactFlowWrapper = useRef(null);
@@ -41,12 +45,18 @@ const DnDFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
-  const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
+  // const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
+  // const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+  // const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
+  // const [selectedNode, setSelectedNode] = useState<CustomNodeType | null>(null);
+  const [selectedNode, setSelectedNode] =
+    useState<ReactFlowNode<NodeData> | null>(null);
+  // const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [suggestedNodes, setSuggestedNodes] = useState<string[]>([
     "choose_toppings",
     "done",
   ]);
-  const nodeTypes = useMemo(() => ({ customNode: Node }), []);
+  const nodeTypes = useMemo(() => ({ customNode: CustomNode }), []);
 
   const onConnect = useCallback(
     (params: Edge | Connection) => {
@@ -57,8 +67,8 @@ const DnDFlow = () => {
         sourceNode &&
         targetNode &&
         isValidConnection(
-          sourceNode as Node<NodeData>,
-          targetNode as Node<NodeData>,
+          sourceNode as unknown as CustomNodeType,
+          targetNode as unknown as CustomNodeType,
         )
       ) {
         setEdges((eds) => addEdge(params, eds));
@@ -81,12 +91,15 @@ const DnDFlow = () => {
   );
 
   const isValidConnection = (
-    source: Node<NodeData>,
-    target: Node<NodeData>,
+    source: CustomNodeType,
+    target: CustomNodeType,
   ): boolean => {
+    const sourceData = source.data as NodeData;
+    const targetData = target.data as NodeData;
+
     return (
-      (source.data.type === "message" && target.data.type === "reply") ||
-      (source.data.type === "reply" && target.data.type === "message")
+      (sourceData.type === "message" && targetData.type === "reply") ||
+      (sourceData.type === "reply" && targetData.type === "message")
     );
   };
 
@@ -159,10 +172,10 @@ const DnDFlow = () => {
 
   const onNodeClick = (
     event: React.MouseEvent<Element, MouseEvent>,
-    node: Node<NodeData> | null,
+    node: ReactFlowNode<NodeData> | null,
   ) => {
     if (node) {
-      setSelectedNode(node); // No error here
+      setSelectedNode(node);
       const nextStepID = node.data.nextStepID;
       if (Array.isArray(nextStepID)) {
         setSuggestedNodes(nextStepID);
@@ -172,7 +185,7 @@ const DnDFlow = () => {
         setSuggestedNodes([]);
       }
     } else {
-      setSelectedNode(null); // No error here
+      setSelectedNode(null);
       setSuggestedNodes([]);
     }
     console.log("Selected Node ID: ", selectedNode);

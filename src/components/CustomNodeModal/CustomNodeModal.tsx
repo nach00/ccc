@@ -1,6 +1,6 @@
 // CustomNodeModal.tsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Entry } from "../../types.ts";
 import { Message, Reply } from "../../assets/Icons.tsx";
 import "./CustomNodeModal.css";

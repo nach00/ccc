@@ -1,7 +1,7 @@
 // Node.tsx
 import React from "react";
 import { Message, Reply } from "../../assets/Icons.tsx";
-import "./Node.css";
+import "./CustomNode.css";
 import { Handle, Position } from "reactflow";
 
 interface NodeData {
@@ -19,23 +19,8 @@ interface NodeProps {
   data: NodeData;
 }
 
-const Node: React.FC<NodeProps> = ({ data }) => {
+const CustomNode: React.FC<NodeProps> = ({ data }) => {
   const { type, nodeType, message, intent } = data;
-
-  let typeClass = "";
-  switch (nodeType) {
-    case "default":
-      typeClass = "default";
-      break;
-    case "input":
-      typeClass = "input";
-      break;
-    case "output":
-      typeClass = "output";
-      break;
-    default:
-      typeClass = "";
-  }
 
   return (
     <div className={`main-node_container`}>
@@ -54,4 +39,4 @@ const Node: React.FC<NodeProps> = ({ data }) => {
   );
 };
 
-export default Node;
+export default CustomNode;
