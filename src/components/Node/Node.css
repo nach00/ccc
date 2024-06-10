@@ -1,0 +1,63 @@
+/* Node.css */
+
+/* Main Node Container */
+.main-node_container {
+    /*background-color: #1e293b;*/
+    border-radius: 8px;
+    /*padding: 12px;*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    width: 150px;
+}
+
+/* Header Section */
+.main-node_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 4px;
+    border-radius: 5px 5px 0 0;
+}
+
+.main-node_icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.main-node_icon svg {
+    /*fill: #ffffff;*/
+    width: 1em;
+    height: 1em;
+}
+
+.main-node_header .type {
+    font-size: 12px;
+    font-weight: bold;
+    /*color: #ffffff;*/
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+
+/* Content Section */
+.main-node_content {
+    font-size: 10px;
+    /*color: #d1d5db;*/
+    padding: 0 8px 8px 8px;
+    font-weight: normal;
+}
+
+/* Type-based Colors */
+.main-node_container.default .main-node_header .type {
+    /*color: #fbbf24; !* Yellow *!*/
+}
+
+.main-node_container.input .main-node_header .type {
+    /*color: #22c55e; !* Green *!*/
+}
+
+.main-node_container.output .main-node_header .type {
+    /*color: #ef4444; !* Red *!*/
+}

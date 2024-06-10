@@ -79,3 +79,70 @@ export function Export(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function Reply(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M10 9V5l-7 7l7 7v-4.1c5 0 8.5 1.6 11 5.1c-1-5-4-10-11-11"
+      ></path>
+    </svg>
+  );
+}
+
+export function Message(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M8.5 18.896V16H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-6l-3.073 3.073a.25.25 0 0 1-.427-.177M8 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M8.5 9a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+}
+
+export function Plus(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+      viewBox="0 0 22 22"
+      {...props}
+    >
+      <path fill="currentColor" d="M12 17h-2v-5H5v-2h5V5h2v5h5v2h-5Z"></path>
+    </svg>
+  );
+}
+
+export function Delete(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12Z"
+      ></path>
+    </svg>
+  );
+}

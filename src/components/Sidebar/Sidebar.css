@@ -1,0 +1,249 @@
+/* Sidebar.css */
+@import "../../assets/colors.css";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Typography */
+.title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--blue12);
+}
+
+.description {
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: var(--blue11);
+}
+
+/* Layout */
+aside {
+    margin: 24px;
+    border-radius: 17px;
+    border: var(--blue4) 1px solid;
+    padding: 24px;
+    height: min-content;
+    background: var(--blue2);
+    color: var(--blue12);
+    line-height: 150%;
+    min-width: 400px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0;
+}
+
+/* Node Styles */
+.sidebar-node {
+    font-size: 14px;
+    /*height: 40px;*/
+    /*padding: 16px;*/
+    padding-right: 16px;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    transition: background-color 0.3s, color 0.3s;;
+    font-weight: normal;
+}
+
+.sidebar-node_icon {
+    height: 50px;
+    min-width: 80px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* Node Variants */
+.input {
+    background-color: var(--green1);
+    color: var(--green12);
+    border: var(--green6) 2px solid;
+}
+
+.input .header {
+    background-color: var(--green6);
+    color: var(--green11);
+}
+
+.input .content {
+    color: var(--green12);
+}
+
+.input:hover {
+    background-color: var(--green3);
+    color: var(--green9);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.input.selected {
+    border-color: var(--green9);
+}
+
+.input .sidebar-node_icon {
+    background-color: var(--green6);
+    color: var(--green11);
+}
+.default {
+    background-color: var(--yellow1);
+    color: var(--yellow12);
+    border: var(--yellow6) 2px solid;
+}
+
+.default .header {
+    background-color: var(--yellow6);
+    color: var(--yellow11);
+    /*border: var(--yellow6) 2px solid;*/
+}
+
+.default .content {
+    color: var(--yellow12);
+}
+
+.default:hover {
+    background-color: var(--yellow3);
+    color: var(--yellow9);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.default.selected {
+    border-color: var(--yellow9);
+}
+
+.default .sidebar-node_icon {
+    background-color: var(--yellow6);
+    color: var(--yellow11);
+
+
+}
+
+.output {
+    background-color: var(--red1);
+    color: var(--red12);
+    border: var(--red6) 2px solid;
+}
+
+.output .header {
+    background-color: var(--red6);
+    color: var(--red11);
+}
+
+.output .content {
+    color: var(--red12);
+}
+
+.output:hover {
+    background-color: var(--red3);
+    color: var(--red9);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.output.selected {
+    border-color: var(--red9);
+}
+
+.output .sidebar-node_icon {
+    background-color: var(--red6);
+    color: var(--red11);
+}
+
+.custom {
+    background-color: var(--blue1);
+    color: var(--blue9);
+    border: var(--blue6) 2px solid;
+}
+
+.custom:hover {
+    background-color: var(--blue3);
+    color: var(--blue9);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom.selected {
+    border-color: var(--blue9);
+}
+
+.custom .sidebar-node_icon {
+    background-color: var(--blue6);
+    color: var(--blue12);
+}
+
+/* Icons and Badges */
+.pizza-icon {
+    width: 100%;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggested {
+    position: relative;
+    box-shadow:  0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.suggested:after {
+    padding: 0 10px;
+    border-radius: 999px;
+    content: 'Suggested';
+    font-size: 13px;
+    background-color: var(--blue2);
+    border: var(--blue6) 1px solid;
+    color: var(--blue11);
+    font-weight: 400;
+    margin-left: 10px;
+    top: -12px;
+    right: -24px;
+    position: absolute;
+    rotate: 8deg;
+
+}
+
+.dndnode .react-flow__node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dndnode svg {
+    width: 24px;
+    height: 100%;
+}
+
+.node-icon {
+    height: 100%;
+    margin-right: 12px;
+}
+
+.dndnode-container {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.dndnode {
+    cursor: grab;
+}
+
+.node-content {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}

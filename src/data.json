@@ -18,7 +18,7 @@
     "type": "reply",
     "nodeType": "default",
     "intent": "Negative: the customer would not like to order a pizza",
-    "nextStepID": "done"
+    "nextStepID": "cancel"
   },
   {
     "id": "choose_toppings",
@@ -67,6 +67,14 @@
     "type": "message",
     "nodeType": "output",
     "message": "Pizza is on the way!",
+    "nextStepID": null
+  },
+
+  {
+    "id": "cancel",
+    "type": "message",
+    "nodeType": "output",
+    "message": "No problem, message us the next time you’re hungry!",
     "nextStepID": null
   }
 ]

@@ -1,0 +1,304 @@
+/*!* CustomNodeModal.css *!*/
+/*@import "../../assets/colors.css";*/
+
+
+/*.modal {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    z-index: 999;*/
+/*}*/
+
+/*.modal-content {*/
+/*    background-color: var(--blue1);*/
+/*    padding: 24px;*/
+/*    border-radius: 9px;*/
+/*    max-width: 500px;*/
+/*    width: 100%;*/
+/*    border: var(--blue6) 1px solid;*/
+/*}*/
+
+/*.modal-buttons {*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.modal-buttons button {*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*.node-preview {*/
+/*    margin-top: 20px;*/
+/*    padding: 24px;*/
+/*    background-color: var(--blue2);*/
+/*}*/
+
+/*.tabs {*/
+/*    margin-bottom: 20px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.tab-header {*/
+/*    padding: 10px 0;*/
+/*    background-color: var(--blue4);*/
+/*}*/
+
+/*.tab {*/
+/*    padding: 12px;*/
+/*    cursor: pointer;*/
+/*    position: relative;*/
+/*}*/
+
+/*.tab:hover {*/
+/*    background-color: var(--blue3);*/
+/*    color: var(--blue9);*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
+
+/*.tab.active {*/
+/*    background-color: var(--blue8);*/
+/*    color: var(--blue12);*/
+/*}*/
+
+/*.tab.active:hover {*/
+/*    background-color: var(--blue9);*/
+/*    color: var(--blue12);*/
+/*}*/
+
+/*.tab input[type="radio"] {*/
+/*    position: absolute;*/
+/*    opacity: 0;*/
+/*    pointer-events: none;*/
+/*}*/
+
+/*input {*/
+/*    padding: 10px;*/
+/*    border-radius: 7px;*/
+/*    background-color: var(--blue2);*/
+/*    border: var(--blue8) 1px solid;*/
+/*    color: var(--blue9);*/
+/*    font-size: 14px;*/
+/*    width: 400px;*/
+/*}*/
+
+/*button {*/
+/*    padding: 10px;*/
+/*    border-radius: 7px;*/
+/*    background-color: var(--blue2);*/
+/*    border: var(--blue8) 1px solid;*/
+/*    color: var(--blue9);*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*button:hover {*/
+/*    background-color: var(--blue3);*/
+/*    color: var(--blue9);*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
+
+
+/*h2 {*/
+/*    font-size: 32px;*/
+/*    color: var(--blue12);*/
+/*}*/
+
+/*p {*/
+/*    font-size: 20px;*/
+/*    margin-bottom: 24px;*/
+/*    color: var(--blue11);*/
+/*}*/
+
+/*.modal-label {*/
+/*    font-size: 16px;*/
+/*    margin-bottom: 8px;*/
+/*    color: var(--blue11);*/
+/*    min-width: 200px;*/
+/*    text-align: end;*/
+/*    margin-right: 24px;*/
+/*}*/
+
+/*.modal-section {*/
+/*    margin-bottom: 20px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+
+/* CustomNodeModal.css */
+@import "../../assets/colors.css";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    font-family: 'Archivo', sans-serif; /* Use Archivo font */
+}
+
+.modal-content {
+    background-color: var(--blue1); /* Dark background color */
+    padding: 24px;
+    border-radius: 9px;
+    max-width: 600px; /* Adjust width to match mockup */
+    width: 100%;
+    border: 1px solid var(--blue10); /* Border color matching the blue highlight */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    margin-left: 10px;
+    padding: 10px 20px; /* Adjust padding for buttons */
+    border-radius: 5px; /* Slightly rounder buttons */
+    background-color: #1E6EFA; /* Button background color matching blue highlight */
+    border: none; /* Remove border */
+    color: #FFFFFF; /* White text color */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer;
+}
+
+.modal-buttons button:hover {
+    background-color: #3A80FD; /* Lighter blue on hover */
+    transition: background-color 0.3s;
+}
+
+.preview-label {
+
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--blue11);
+    margin-bottom: 24px;
+}
+
+.node-preview {
+    margin-top: 20px;
+    padding: 24px;
+    background-color: var(--blue2);
+    border-radius: 13px;
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    background-color: var(--blue4); /* Dark background for tabs */
+    border-radius: 7px; /* Rounded corners for tabs */
+    overflow: hidden; /* Ensure tabs fit within the container */
+}
+
+.tab-header {
+    padding: 10px 0;
+    background-color: var(--blue4); /* Dark background color */
+}
+
+.tab {
+    padding: 12px 24px; /* Adjust padding for tabs */
+    cursor: pointer;
+    position: relative;
+    background-color: var(--blue4); /* Dark background color for tabs */
+    color: var(--blue12); /* Light text color for tabs */
+    border-right: 1px solid var(--blue7); /* Border between tabs */
+}
+
+.tab:last-child {
+    border-right: none; /* Remove right border from the last tab */
+}
+
+.tab:hover {
+    background-color: var(--blue5);
+    color: var(--blue12);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab.active {
+    background-color: var(--blue8); /* Blue background color for active tab */
+    color: var(--blue12); /* White text color for active tab */
+}
+
+.tab.active:hover {
+    background-color: var(--blue9);
+    border: var(--blue10);
+    color: #FFFFFF;
+}
+
+.tab input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--blue2);
+    border: 1px solid var(--blue8);
+    color: var(--blue9);
+    font-size: 16px;
+    width: 100%;
+    /*margin-top: 10px;*/
+}
+
+input::placeholder {
+    color: var(--blue9);
+}
+
+input:focus {
+    color: var(--blue12);
+    outline: var(--blue7);
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--blue8);
+    border: none;
+    color: var(--blue12);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--blue9);
+    transition: background-color 0.3s;
+    border: var(--blue9);
+}
+
+h2 {
+    font-size: 32px;
+    color: var(--blue12); /* Light text color */
+    margin-bottom: 48px;
+}
+
+.modal-label {
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--blue11);
+    min-width: 200px;
+    text-align: end;
+    margin-right: 24px;
+}
+
+.modal-section {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}

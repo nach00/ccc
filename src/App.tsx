@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 
 import ReactFlow, {
   addEdge,
@@ -13,16 +13,16 @@ import ReactFlow, {
   ReactFlowProvider,
   useEdgesState,
   useNodesState,
-  Node,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./styles.css";
-import data from "./data.json";
-import Sidebar from "./Sidebar";
-import { Export } from "./Icons.tsx";
+import "./App.css";
+import Sidebar from "./components/Sidebar/Sidebar.tsx";
+import { Export } from "./assets/Icons.tsx";
 import { Analytics } from "@vercel/analytics/react";
+import { initialNodes, initialEdges } from "./initialElements";
+import Node from "./components/Node/Node.tsx";
 
 interface NodeData {
   id: string;
@@ -46,11 +46,49 @@ const DnDFlow = () => {
     "choose_toppings",
     "done",
   ]);
+  const nodeTypes = useMemo(() => ({ customNode: Node }), []);
 
   const onConnect = useCallback(
-    (params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges],
+    (params: Edge | Connection) => {
+      const sourceNode = nodes.find((node) => node.id === params.source);
+      const targetNode = nodes.find((node) => node.id === params.target);
+
+      if (
+        sourceNode &&
+        targetNode &&
+        isValidConnection(
+          sourceNode as Node<NodeData>,
+          targetNode as Node<NodeData>,
+        )
+      ) {
+        setEdges((eds) => addEdge(params, eds));
+      } else {
+        toast.error(
+          'Invalid connection. Nodes with "message" type can only connect to nodes with "reply" type, and vice versa.',
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            className: "toast",
+          },
+        );
+      }
+    },
+    [nodes, setEdges],
   );
+
+  const isValidConnection = (
+    source: Node<NodeData>,
+    target: Node<NodeData>,
+  ): boolean => {
+    return (
+      (source.data.type === "message" && target.data.type === "reply") ||
+      (source.data.type === "reply" && target.data.type === "message")
+    );
+  };
 
   const onDragOver = useCallback(
     (event: {
@@ -94,7 +132,7 @@ const DnDFlow = () => {
 
       const newNode = {
         id: `${id}-${new Date().getTime()}`,
-        type: nodeType,
+        type: "customNode",
         data: {
           id,
           type,
@@ -205,6 +243,7 @@ const DnDFlow = () => {
             fitView
             snapToGrid={true}
             snapGrid={[100, 100]}
+            nodeTypes={nodeTypes}
           >
             <Background
               color="#0d2847"
@@ -226,64 +265,5 @@ const DnDFlow = () => {
     </div>
   );
 };
-
-const initialEdges = [
-  { id: "0-1", source: "0", target: "1" },
-  { id: "0-2", source: "0", target: "2" },
-];
-
-const initialNodes = [
-  {
-    id: "0",
-    type: data[0].nodeType,
-    data: {
-      id: data[0].id,
-      type: data[0].type,
-      nodeType: data[0].nodeType,
-      label: data[0].message,
-      message: data[0].message,
-      intent: data[0].intent,
-      nextStepID: Array.isArray(data[0].nextStepID)
-        ? data[0].nextStepID.filter((id): id is string => id !== null)
-        : data[0].nextStepID ?? null,
-    },
-    position: { x: 0, y: 0 },
-    className: data[0].nodeType,
-  },
-  {
-    id: "1",
-    type: data[1].nodeType,
-    data: {
-      id: data[1].id,
-      type: data[1].type,
-      nodeType: data[1].nodeType,
-      label: data[1].intent,
-      message: data[1].message,
-      intent: data[1].intent,
-      nextStepID: Array.isArray(data[1].nextStepID)
-        ? data[1].nextStepID.filter((id): id is string => id !== null)
-        : data[1].nextStepID ?? null,
-    },
-    position: { x: -100, y: 100 },
-    className: data[1].nodeType,
-  },
-  {
-    id: "2",
-    type: data[2].nodeType,
-    data: {
-      id: data[2].id,
-      type: data[2].type,
-      nodeType: data[2].nodeType,
-      label: data[2].intent,
-      message: data[2].message,
-      intent: data[2].intent,
-      nextStepID: Array.isArray(data[2].nextStepID)
-        ? data[2].nextStepID.filter((id): id is string => id !== null)
-        : data[2].nextStepID ?? null,
-    },
-    position: { x: 100, y: 100 },
-    className: data[2].nodeType,
-  },
-];
 
 export default DnDFlow;
