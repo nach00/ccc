@@ -96,7 +96,7 @@ const Sidebar = ({ suggestedNodes }: { suggestedNodes: string[] }) => {
     const deletedNode = customNodes.find((node) => node.id === nodeId);
     setCustomNodes(customNodes.filter((node) => node.id !== nodeId));
     setDeletedNode(deletedNode || null);
-    toast.info("Node deleted. Click here to Undo", {
+    toast.info("Node deleted.", {
       onClick: undoDeleteNode,
     });
   };
