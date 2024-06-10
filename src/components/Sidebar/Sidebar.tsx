@@ -183,12 +183,12 @@ const Sidebar = ({ suggestedNodes }: { suggestedNodes: string[] }) => {
                 {customNode.type}
               </div>
               {customNode.message || customNode.intent}
-            </div>
-            <div
-              className="delete-icon"
-              onClick={() => deleteCustomNode(customNode.id)}
-            >
-              <Delete />
+              <div
+                className="delete-icon"
+                onClick={() => deleteCustomNode(customNode.id)}
+              >
+                <Delete />
+              </div>
             </div>
           </div>
         ))}
